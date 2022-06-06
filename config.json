@@ -1,0 +1,39 @@
+{
+  "name": "maven",
+  "viewName": "Maven",
+  "version": "0.1.0",
+  "type": "executer",
+  "execProgram": "node",
+  "imgUrl": "logo.png",
+  "main": "app.js",
+  "description": "Kaholo Plugin for Maven CLI",
+  "methods": [
+    {
+      "name": "testCli",
+      "viewName": "Get Maven Version",
+      "params": []
+    },
+    {
+      "name": "runCommand",
+      "viewName": "Run Maven Command",
+      "params": [
+        {
+          "name": "workingDirectory",
+          "viewName": "Working Directory",
+          "type": "string",
+          "description": "Path to a directory on the Kaholo agent which contains pom.xml and all other files needed to complete the Maven build.",
+          "placeholder": "/home/myproject/myapp",
+          "required": true
+        },
+        {
+          "name": "command",
+          "viewName": "Command",
+          "type": "string",
+          "description": "Maven command to do the required build.",
+          "placeholder": "mvn package",
+          "required": true
+        }
+      ]
+    }
+  ]
+}
