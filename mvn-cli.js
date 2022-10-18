@@ -6,15 +6,14 @@ const {
   assertPathExistence,
 } = require("./helpers");
 const {
-  MAVEN_DOCKER_IMAGE,
   MAVEN_CLI_NAME,
   MAVEN_CACHE_DIRECTORY_NAME,
 } = require("./consts.json");
 
-async function execute({ command, workingDirectory }) {
+async function execute({ customImage, command, workingDirectory }) {
   const dockerCommandBuildOptions = {
     command: docker.sanitizeCommand(command, MAVEN_CLI_NAME),
-    image: MAVEN_DOCKER_IMAGE,
+    image: customImage,
   };
 
   const mavenAgentCachePath = joinPaths(getHomeDirectory(), MAVEN_CACHE_DIRECTORY_NAME);
@@ -55,20 +54,14 @@ async function execute({ command, workingDirectory }) {
 
   const dockerCommand = docker.buildDockerCommand(dockerCommandBuildOptions);
 
-  const commandOutput = await exec(dockerCommand, {
-    env: shellEnvironmentalVariables,
-  }).catch((error) => {
-    throw new Error(error.stderr || error.stdout || error.message || error);
-  });
-
-  if (commandOutput.stderr && !commandOutput.stdout) {
-    throw new Error(commandOutput.stderr);
-  } else if (commandOutput.stdout) {
-    console.error(commandOutput.stderr);
+  const { stdout, stderr } = await exec(dockerCommand, { env: shellEnvironmentalVariables });
+  if (stderr) {
+    console.error(stderr);
   }
 
-  return commandOutput.stdout;
+  return stdout;
 }
+
 
 module.exports = {
   execute,

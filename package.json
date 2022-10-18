@@ -1,6 +1,6 @@
 {
-  "name": "kaholo-plugin-maven",
-  "description": "Kaholo plugin for Maven",
+  "name": "kaholo-plugin-custom-maven",
+  "description": "Kaholo plugin for Custom Maven docker image",
   "main": "app.js",
   "scripts": {
     "test": "npx jest .",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kaholo/kaholo-plugin-maven.git"
+    "url": "git+https://github.com/genesisthomas/kaholo-plugin-custom-maven.git"
   },
   "author": "Kaholo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Kaholo/kaholo-plugin-maven/issues"
+    "url": "https://github.com/genesisthomas/kaholo-plugin-custom-maven/issues"
   },
-  "homepage": "https://github.com/Kaholo/kaholo-plugin-maven#readme",
+  "homepage": "https://github.com/genesisthomas/kaholo-plugin-custom-maven#readme",
   "devDependencies": {
     "eslint": "8.8.0",
     "eslint-config-airbnb-base": "15.0.0",

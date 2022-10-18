@@ -1,17 +1,25 @@
 {
-  "name": "maven",
-  "viewName": "Maven",
-  "version": "2.0.0",
+  "name": "custom-maven",
+  "viewName": "Custom-Maven",
+  "version": "1.0.0",
   "type": "executer",
   "execProgram": "node",
   "imgUrl": "logo.png",
   "main": "app.js",
-  "description": "Kaholo Plugin for Maven CLI",
+  "description": "Kaholo Plugin for custom Maven images",
   "methods": [
     {
       "name": "runCommand",
       "viewName": "Run Maven Command",
       "params": [
+        {
+          "name": "customImage",
+          "viewName": "Custom Image",
+          "type": "string",
+          "description": "Docker-style custom maven image with tag",
+          "placeholder": "markhobson/maven-chrome:jdk-8",
+          "required": true
+        },
         {
           "name": "workingDirectory",
           "viewName": "Working Directory",

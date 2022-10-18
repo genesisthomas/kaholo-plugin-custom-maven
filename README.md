@@ -1,8 +1,8 @@
-# Kaholo Maven Plugin
-This plugin provides [Maven](https://maven.apache.org/) capability to Kaholo Pipelines. Maven is a build automation tool used primarily for Java projects. Maven can also be used to build and manage projects written in C#, Ruby, Scala, and other languages.
+# Kaholo Custom Maven Plugin
+This plugin provides customized [Maven](https://maven.apache.org/) capability to Kaholo Pipelines. Maven is a build automation tool used primarily for Java projects. Maven can also be used to build and manage projects written in C#, Ruby, Scala, and other languages.
 
 ## Use of Docker
-This plugin relies on the [official Docker image](https://hub.docker.com/_/maven) "maven" to run the Maven command, `mvn`. This has many upsides but a few downsides as well of which the user should be aware.
+This plugin relies on any custom maven docker images to run the Maven command, `mvn`. This has many upsides but a few downsides as well of which the user should be aware.
 
 If running your own Kaholo agents in a custom environment, you will have to ensure docker is installed and running on the agent and has sufficient privilege to retrieve the image and start a container. If the agent is already running in a container (kubernetes or docker) then this means a docker container running within another container.
 
@@ -17,11 +17,9 @@ Should these limitations negatively impact on your use case, Maven can be instal
 ## Plugin Installation
 For download, installation, upgrade, downgrade and troubleshooting of plugins in general, see [INSTALL.md](./INSTALL.md).
 
-## Method: Get Maven Version
-This method does a trivial test of the Maven plugin to confirm that the docker image can be pulled and a Maven command successfully run, in this case `mvn --version`. Use this method only to confirm the plugin and Kaholo agent are working as designed and ready to execute your Maven commands.
-
 ## Method: Run Maven Command
 This method run any command that begins with `mvn`, for example `mvn package`. To run commands that do NOT start with `mvn`, see the [Command Line plugin](https://github.com/Kaholo/kaholo-plugin-cmd) instead.
 
 ### Parameters
+* Custom Image - Docker-style custom maven image with tag.
 * Working Directory - a path within which the project requiring building exists. This is typically a repository cloned to the agent using the [Git Plugin](https://github.com/Kaholo/kaholo-plugin-git) earlier in the pipeline. It is simplest if this directory contains the main pom.xml. Only files within this directory will be available to the maven command.
